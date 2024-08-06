@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the folder path
-folder_path="theme"
+folder_path="theme/login"
 providers_dir="/opt/keycloak/providers"
 
 # Check if the folder exists
