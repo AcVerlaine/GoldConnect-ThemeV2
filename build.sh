@@ -1,20 +1,41 @@
 #!/bin/bash
-set -o errexit
 
-declare -r currentDir="$(dirname "${BASH_SOURCE[0]}")"
-source "${currentDir}/build.properties"
+# Define the folder path
+folder_path="theme"
+providers_dir="/opt/keycloak/providers"
 
-DISTRIBUTION_NAME=spherelink-theme-$THEME_VERSION
+# Check if the folder exists
+if [ ! -d "$folder_path" ]; then
+  echo "Error: $folder_path does not exist."
+  exit 1
+fi
 
-# prepare and zip the theme content
-echo "info::: Removing an existing '$DISTRIBUTION_NAME.zip' file."
-rm -rf $DISTRIBUTION_NAME.zip
+# Check if the providers directory exists, if not, create it
+if [ ! -d "$providers_dir" ]; then
+  mkdir "$providers_dir"
+fi
 
-mkdir spherelink
-echo "info::: Packaging spherelink theme as '$DISTRIBUTION_NAME.zip'"
+# Prompt for the JAR file name or use a default name
+read -p "Enter the theme name (default: GoldConnect-ThemeV2): " jar_name
 
-cp -rf theme/* spherelink/
-zip -r $DISTRIBUTION_NAME.zip spherelink
+# Use the default name if no input provided
+jar_name=${jar_name:-GoldConnect-ThemeV2}
 
-echo "info::: Cleanup temp files and folders."
-rm -rf spherelink
+# Add the .jar extension if not already present
+if [[ $jar_name != *".jar" ]]; then
+  jar_name="$jar_name.jar"
+fi
+
+# Create a temporary directory for JAR packaging
+temp_dir=$(mktemp -d)
+
+# Copy the contents of the folder to the temporary directory
+cp -R "$folder_path"/* "$temp_dir"
+
+# Create the JAR file inside the providers directory
+jar cf "$providers_dir/$jar_name" -C "$temp_dir" .
+
+# Cleanup the temporary directory
+rm -rf "$temp_dir"
+
+echo "Theme created: $providers_dir/$jar_name"

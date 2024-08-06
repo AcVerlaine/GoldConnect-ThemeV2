@@ -3,7 +3,19 @@
     <#if section = "title">
         ${msg("loginTitle",(realm.displayName!''))}
     <#elseif section = "header">
-        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet"/>
+        <style>
+            @font-face {
+                font-family: 'Marianne';
+                src: url('${url.resourcesPath}/fonts/marianne-regular.woff2') format('woff2'),
+                     url('${url.resourcesPath}/fonts/marianne-regular.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            body, .application-name, .login-field, .submit, .social-link-style, .copyright {
+                font-family: 'Marianne', sans-serif;
+            }
+        </style>
         <link href="${url.resourcesPath}/img/apple-touch-icon.png" rel="icon"/>
         <script>
             function togglePassword() {
@@ -20,11 +32,11 @@
         </script>
     <#elseif section = "form">
         <div>
-            <img class="logo" src="${url.resourcesPath}/img/EduSphere-250.png" alt="EduSphere">
+            <img class="logo" src="${url.resourcesPath}/img/goldeduc.png" alt="Goldeduc">
         </div>
         <div class="box-container">
             <div>
-                <p class="application-name">Connectez-vous avec SphereID</p>
+                <p class="application-name">Connectez-vous avec GoldConnect</p>
             </div>
         <#if realm.password>
             <div>
