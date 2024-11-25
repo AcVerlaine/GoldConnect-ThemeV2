@@ -1,10 +1,12 @@
-# SphereLink Keycloak Theme
+# THIS PROJECT IS NO LONGER MAINTENED, GOLDEDUC AND GOLDCONNECT ARE DOWN, FOR EVER.
+
+# GoldConnect Keycloak Theme
 
 [![Build Status](https://github.com/AcVerlaine/GoldConnect-ThemeV2/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/AcVerlaine/GoldConnect-ThemeV2/actions/workflows/ci.yml)
 
 ## Overview
 
-The [SphereLink Theme](https://github.com/AcVerlaine/GoldConnect-ThemeV2) uses [Keycloak](https://www.keycloak.org/).  Out of the box, the UI provided by Keycloak is 
+The [GoldConnect Theme](https://github.com/AcVerlaine/GoldConnect-ThemeV2) uses [Keycloak](https://www.keycloak.org/).  Out of the box, the UI provided by Keycloak is 
 quite different from the rest of GoldConnect.  But Keycloak allows a customer to provide alternative themes to replace the default
 Keycloak themes.  We use this mechanism to provide an GoldConnect theme.
 
